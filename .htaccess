@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Learning LAMP"
+AuthUserFile /var/www/learninglamp/.htpasswd
+Require valid-user
