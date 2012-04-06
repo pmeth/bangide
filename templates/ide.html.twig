@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Learning LAMP</title>
+		<script src="js/CodeMirror-2.23/lib/codemirror.js"></script>
+		<script src="js/ide.js"></script>
+		<link rel="stylesheet" href="js/CodeMirror-2.23/lib/codemirror.css">
+
+		<link rel="stylesheet" type="text/css" href="css/ide.css" />
+		<!--[if lt IE 9]>
+				<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div id="phpcode_wrapper">
+			<form action="render.php" target="rendered" method="post">
+				<textarea name="phpcode" id="phpcode"><?php echo $content; ?></textarea><br />
+				<input type="submit" name="submit" value="SAVE &amp; RUN" />
+			</form>
+		</div>
+		<div id="rendered_wrapper">
+			<iframe id="rendered" name="rendered"></iframe>
+		</div>
+	</body>
+	<script src="js/CodeMirror-2.23/mode/php/php.js"></script>
+	<script src="js/CodeMirror-2.23/mode/xml/xml.js"></script>
+	<script src="js/CodeMirror-2.23/mode/javascript/javascript.js"></script>
+	<script src="js/CodeMirror-2.23/mode/css/css.js"></script>
+	<script src="js/CodeMirror-2.23/mode/clike/clike.js"></script>
+
+	<script src="js/ide.js"></script>
+</html>

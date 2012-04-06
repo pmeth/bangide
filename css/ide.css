@@ -1,0 +1,19 @@
+#phpcode_wrapper {
+    FLOAT: left;
+    width: 650px;
+    height: 100%;
+}
+#phpcode_wrapper form {
+    height: 100%;
+    width: 100%;
+}
+#phpcode {
+    height: 1000px;
+    width: 630px;
+    border:  1px solid black;
+}
+#rendered {
+    width: 1000px;
+    height: 1000px;
+    border:  1px solid black;
+}
