@@ -6,21 +6,33 @@
 		<script src="js/CodeMirror-2.23/lib/codemirror.js"></script>
 		<script src="js/ide.js"></script>
 		<link rel="stylesheet" href="js/CodeMirror-2.23/lib/codemirror.css">
-
 		<link rel="stylesheet" type="text/css" href="css/ide.css" />
+
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.ui.all.js"></script>
+		<script type="text/javascript" src="js/jquery.layout.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/jquery.layout.css" />
+
+		<script type="text/javascript" src="js/layout.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/layout.css" />
+
 		<!--[if lt IE 9]>
 				<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 	</head>
 	<body>
+		<div class="ui-layout-west">
 		<div id="phpcode_wrapper">
 			<form action="render.php" target="rendered" method="post">
 				<textarea name="phpcode" id="phpcode"><?php echo $content; ?></textarea><br />
 				<input type="submit" name="submit" value="SAVE &amp; RUN" />
 			</form>
 		</div>
+		</div>
+		<div class="ui-layout-east">
 		<div id="rendered_wrapper">
 			<iframe id="rendered" name="rendered"></iframe>
+		</div>
 		</div>
 	</body>
 	<script src="js/CodeMirror-2.23/mode/php/php.js"></script>
