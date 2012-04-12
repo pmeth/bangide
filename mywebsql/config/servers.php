@@ -1,9 +1,9 @@
 <?php
 /**
  * This file is a part of MyWebSQL package
- * defining more that one server here will give user the option to select a server at login time 
+ * defining more that one server here will give user the option to select a server at login time
  * Notes:
- *   Server list is used only when authentication type is LOGIN 
+ *   Server list is used only when authentication type is LOGIN
  *
  * @file:      config/servers.php
  * @author     Samnan ur Rehman
@@ -11,12 +11,12 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
- 
+
 	// add or remove list of servers below
-	
+
 	// please make sure you have the proper extensions enabled in your php config
 	// to successfully connect to servers other than MySQL
-	
+
 	// valid drivers types are:
 	// mysql4, mysql5, mysqli, sqlite
 	// for sqlite driver:
@@ -28,13 +28,13 @@
 		                             'host'     => 'localhost',
 		                             'driver'   => extension_loaded('mysqli') ? 'mysqli' : 'mysql5'
 		                         ),
-		'SQLite Databases'          => array(
+		/*'SQLite Databases'          => array(
 		                             'host'     => 'c:/sqlitedb/',
 		                             'driver'   => 'sqlite',
 		                             'user'     => 'root',   // set this yourself
 		                             'password' => 'sqlite'  // set this yourself
 		                         )
-		/*'MySQL Proxy Server'  => array(
+		'MySQL Proxy Server'  => array(
 		                             'host'     => 'localhost:4040',
 		                             'driver'   => 'mysql5'
 		                         ),
