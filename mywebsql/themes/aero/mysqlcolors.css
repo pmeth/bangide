@@ -1,0 +1,89 @@
+html {
+	cursor: text;
+}
+.editbox {
+	color: #494949;
+	font-family: monospace;
+	font-size: 10pt;
+	margin: 0.3em;
+	padding: 0;
+	text-shadow: 0px 0px 0px;
+}
+.editbox p {
+	margin: 0;
+}
+span.sql-keyword {
+	color: blue;
+	text-shadow: 0px 0px 0px;
+}
+span.sql-var {
+	color: red;
+	text-shadow: 0px 0px 0px;
+}
+span.sql-comment {
+	color: #AA7700;
+	text-shadow: 0px 0px 0px;
+}
+span.sql-literal {
+	color: green;
+	text-shadow: 0px 0px 0px;
+}
+span.sql-operator {
+	color: blue;
+	text-shadow: 0px 0px 0px;
+}
+span.sql-word {
+	color: #494949;
+	text-shadow: 0px 0px 0px;
+}
+span.sql-quoted-word {
+	color: #680;
+	text-shadow: 0px 0px 0px;
+}
+span.sql-function {
+	color: orange;
+	text-shadow: 0px 0px 0px;
+}
+span.sql-type {
+	color: purple;
+	text-shadow: 0px 0px 0px;
+}
+span.sql-separator {
+	color: #666666;
+	text-shadow: 0px 0px 0px;
+}
+span.sql-number {
+	color: orange ;
+	text-shadow: 0px 0px 0px;
+}
+.CodeMirror-wrapping {
+	background: transparent;
+}
+.CodeMirror-line-numbers {
+	background: url(themes/aero/images/glass2.png) transparent;
+	border-right: 1px dotted #d4d4d4;
+	color: #aaaaaa;
+	font-family: courier new;
+	font-size: 10pt;
+	line-height: 1.2em;
+	padding: 4px 8px 4px 5px;
+	text-shadow: 0px 0px 0px;
+}
+div.sql_lines {
+	color: #999999;
+	float: left;
+	font-family: courier new;
+	font-size: 10pt;
+	padding: 0 10px 0 0;
+	text-shadow: 0px 0px 0px;
+}
+pre.sql_output {
+	float: left;
+	text-shadow: 0px 0px 0px;
+	width: 90%;
+}
+pre.sql_output span {
+	font-family: courier new;
+	font-size: 10pt;
+	text-shadow: 0px 0px 0px;
+}
