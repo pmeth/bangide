@@ -21,6 +21,7 @@ $filename = $projectname . $_POST['file'];
 $allowedfilenames = array(
 	 $projectname . '/index.php',
 	 $projectname . '/css/common.css',
+	 $projectname . '/js/common.js',
 );
 
 if(!in_array($filename,$allowedfilenames)) {

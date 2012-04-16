@@ -1,4 +1,10 @@
-.jello {
-background-color: yellow;
+body {
+font-family: arial, helvetica;
+font-size: 30pt;
 }
+
+.jello {
+background-color: orange;
+}
+
 
