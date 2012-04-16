@@ -4,9 +4,10 @@ var editor;
 $(document).ready(function () {
 	myLayout = $('body').layout({
 		west: {
-			size: 600
+			size: '15%'
 		},
-		center: {
+		east: {
+			size: '38%',
 			maskContents: true
 		}
 	});
@@ -21,6 +22,8 @@ $(document).ready(function () {
 		tabMode: "shift"
 	});
 
-//	$('.ui-layout-resizer').mousedown(function(){ $("#rendered_wrapper").hide(); });
-//	$('.ui-layout-resizer').mouseup(function(){ $("#rendered_wrapper").show(); });
+	$('.filetree').treeview({
+		collapsed: true
+	});
+
 });
