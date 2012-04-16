@@ -33,32 +33,8 @@
 		<div class="ui-layout-center">
 			<div id="code_wrapper">
 				<div id="tabs">
-					<ul>
-						<li><a href="#tabs-1"><?php echo $file1; ?></a> <a href="#" id="close-tabs-1" class="close-tabs">x</a></li>
-						<li><a href="#tabs-2"><?php echo $file2; ?></a> <a href="#" id="close-tabs-2" class="close-tabs">x</a></li>
-						<li><a href="#tabs-3"><?php echo $file3; ?></a> <a href="#" id="close-tabs-3" class="close-tabs">x</a></li>
-					</ul>
-					<div id="tabs-1">
-						<form action="render.php" target="rendered" method="post">
-							<textarea name="code" id="tabs1-code" class="code-editor"><?php echo $content1; ?></textarea><br />
-							<input type="hidden" name="file" value="<?php echo $file1?>" />
-							<input type="submit" name="submit" value="SAVE &amp; RUN" />
-						</form>
-					</div>
-					<div id="tabs-2">
-						<form action="render.php" target="rendered" method="post">
-							<textarea name="code" id="tabs2-code" class="code-editor"><?php echo $content2; ?></textarea><br />
-							<input type="hidden" name="file" value="<?php echo $file2?>" />
-							<input type="submit" name="submit" value="SAVE &amp; RUN" />
-						</form>
-					</div>
-					<div id="tabs-3">
-						<form action="render.php" target="rendered" method="post">
-							<textarea name="code" id="tabs3-code" class="code-editor"><?php echo $content3; ?></textarea><br />
-							<input type="hidden" name="file" value="<?php echo $file3?>" />
-							<input type="submit" name="submit" value="SAVE &amp; RUN" />
-						</form>
-					</div>
+					<?php echo tabs::render($openfiles, $filetreepath); ?>
+
 				</div>
 			</div>
 		</div>
