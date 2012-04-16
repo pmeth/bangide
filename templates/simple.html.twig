@@ -20,6 +20,7 @@
 	</head>
 	<body>
 		<div class="ui-layout-west">
+			<div class="windowheading">File Manager</div>
 			<div id="filebrowser_wrapper">
 				<ul id="filetree" class="filetree treeview-famfamfam">
 					<li class="open">
@@ -31,6 +32,7 @@
 			</div>
 		</div>
 		<div class="ui-layout-center">
+			<div class="windowheading">Editor</div>
 			<div id="code_wrapper">
 				<div id="tabs">
 					<?php echo tabs::render($openfiles, $filetreepath); ?>
@@ -41,6 +43,7 @@
 
 
 		<div class="ui-layout-east">
+			<div class="windowheading">Output</div>
 			<div id="rendered_wrapper">
 				<iframe id="rendered" name="rendered"></iframe>
 			</div>

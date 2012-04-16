@@ -61,3 +61,11 @@
 .ui-tabs .ui-tabs-panel {
 	padding: 0;
 }
+
+.windowheading {
+	padding: 3px 10px;
+	background-color: #06b;
+	color: white;
+	font-weight: bold;
+	font-size: 75%;
+}
