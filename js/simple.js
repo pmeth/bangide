@@ -12,7 +12,7 @@ $(document).ready(function () {
 		}
 	});
 
-	editor = CodeMirror.fromTextArea(document.getElementById("phpcode"), {
+	editor = CodeMirror.fromTextArea(document.getElementById("tabs1-code"), {
 		lineNumbers: true,
 		matchBrackets: true,
 		mode: "application/x-httpd-php",
@@ -22,8 +22,9 @@ $(document).ready(function () {
 		tabMode: "shift"
 	});
 
-	$('.filetree').treeview({
+	$('#filetree').treeview({
 		collapsed: true
 	});
 
+	$("#tabs").tabs();
 });

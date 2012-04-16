@@ -1,13 +1,13 @@
-#phpcode_wrapper {
+#code_wrapper {
     float: left;
     width: 100%;
     height: 100%;
 }
-#phpcode_wrapper form {
+#code_wrapper form {
     height: 100%;
     width: 100%;
 }
-#phpcode {
+.code-editor {
     height: 1000px;
     width: 100%;
 
@@ -42,4 +42,20 @@
 .filetree a:hover {
 	text-decoration: underline;
 	color: red;
+}
+
+/* some changes to jquery-ui tabs styling */
+.ui-tabs {
+	padding: 0;
+	height: 100%;
+	border: 0;
+	font-size: 100%;
+}
+
+.ui-tabs .ui-tabs-nav li a {
+	padding: 3px;
+}
+
+.ui-tabs .ui-tabs-panel {
+	padding: 0;
 }

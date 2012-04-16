@@ -1,2 +1,10 @@
-<?php echo "hi"; ?>
-<div style="background-color: green;">Hello jello</div>
+<html>
+   <head>
+	  <link rel="stylesheet" href="css/common.css">
+   </head>
+   <body>
+	  <?php echo "hi"; ?>
+	  <div class="jello">Hello jello</div>
+	  I am king
+   </body>
+</html>

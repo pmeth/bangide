@@ -1,13 +1,13 @@
 <?php
-$content = file_get_contents('student/123/index.php');
-
+$content1 = file_get_contents('student/123/index.php');
+$content2 = file_get_contents('student/123/css/common.css');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<title>Simple Layout Demo</title>
 		<!-- LAYOUT v 1.3.0 -->
-		<link rel="stylesheet" href="lib/css/layout-default-latest.css" />
+		<link rel="stylesheet" href="lib/css/layout-default-latest.css">
 
 		<!-- TREEVIEW v 1.5pre -->
 		<link rel="stylesheet" href="js/jquery.treeview-1.5pre/jquery.treeview.css">
@@ -15,16 +15,19 @@ $content = file_get_contents('student/123/index.php');
 		<!-- CODEMIRROR v 2.23 -->
 		<link rel="stylesheet" href="js/CodeMirror-2.23/lib/codemirror.css">
 
+		<!-- JQUERY UI v 1.8.18 -->
+		<link rel="stylesheet" href="js/jquery-ui-1.8.18.custom/css/smoothness-hard/jquery-ui-1.8.18.custom.css">
+
 		<!-- PAGE SPECIFIC STYLES -->
-		<link rel="stylesheet" type="text/css" href="css/simple.css" />
+		<link rel="stylesheet" href="css/simple.css">
 
 	</head>
 	<body>
 		<div class="ui-layout-west">
 			<div id="filebrowser_wrapper">
-				<ul class="filetree treeview-famfamfam">
-					<li>
-						<span class="folder open">Webroot</span>
+				<ul id="filetree" class="filetree treeview-famfamfam">
+					<li class="open">
+						<span class="folder">Webroot</span>
 						<ul>
 							<li>
 								<span class="folder">images</span>
@@ -49,11 +52,27 @@ $content = file_get_contents('student/123/index.php');
 			</div>
 		</div>
 		<div class="ui-layout-center">
-			<div id="phpcode_wrapper">
-				<form action="render.php" target="rendered" method="post">
-					<textarea name="phpcode" id="phpcode"><?php echo $content; ?></textarea><br />
-					<input type="submit" name="submit" value="SAVE &amp; RUN" />
-				</form>
+			<div id="code_wrapper">
+				<div id="tabs">
+					<ul>
+						<li><a href="#tabs-1">/index.php</a> <a href="#" id="close-tabs-1" class="close-tabs">x</a></li>
+						<li><a href="#tabs-2">/css/common.css</a> <a href="#" id="close-tabs-2" class="close-tabs">x</a></li>
+					</ul>
+					<div id="tabs-1">
+						<form action="render.php" target="rendered" method="post">
+							<textarea name="code" id="tabs1-code" class="code-editor"><?php echo $content1; ?></textarea><br />
+							<input type="hidden" name="file" value="/index.php" />
+							<input type="submit" name="submit" value="SAVE &amp; RUN" />
+						</form>
+					</div>
+					<div id="tabs-2">
+						<form action="render.php" target="rendered" method="post">
+							<textarea name="code" id="tabs2-code" class="code-editor"><?php echo $content2; ?></textarea><br />
+							<input type="hidden" name="file" value="/css/common.css" />
+							<input type="submit" name="submit" value="SAVE &amp; RUN" />
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -86,6 +105,8 @@ $content = file_get_contents('student/123/index.php');
 		<script src="js/CodeMirror-2.23/mode/css/css.js"></script>
 		<script src="js/CodeMirror-2.23/mode/clike/clike.js"></script>
 
+		<!-- JQUERY UI v 1.8.18 -->
+		<script src="js/jquery-ui-1.8.18.custom/js/jquery-ui-1.8.18.custom.min.js"></script>
 
 		<!-- PAGE SPECIFIC SCRIPT -->
 		<script src="js/simple.js"></script>
