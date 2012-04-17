@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Login</title>
+		<meta charset="ISO-8859-1">
+	</head>
+	<body>
+
+
 <?php echo loginerrors::render($loginerrors); ?>
 <form method="post" action="<?php echo $request->getServerVar('PHP_SELF'); ?>">
 	<div class="fieldwrapper">
@@ -11,3 +20,5 @@
 
 	<input type="submit" value="LOGIN">
 </form>
+</body>
+</html>
