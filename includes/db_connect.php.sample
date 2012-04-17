@@ -1,0 +1,10 @@
+<?php
+
+$pdo_driver = 'mysql';
+$pdo_dbname = 'learninglamp';
+$pdo_host = 'localhost';
+$pdo_port = '3306';
+$pdo_user = 'root';
+$pdo_password = '';
+
+$security_salt = 'SetThisToSomethingMoreSecure';

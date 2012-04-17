@@ -1,3 +1,4 @@
 .htaccess
 .htpasswd
 /.git-rewrite/
+/includes/db_connect.php

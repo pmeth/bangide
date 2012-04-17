@@ -1,0 +1,13 @@
+<?php echo loginerrors::render($loginerrors); ?>
+<form method="post" action="<?php echo $request->getServerVar('PHP_SELF'); ?>">
+	<div class="fieldwrapper">
+		<label for="username">User</label>
+		<input type="text" name="username" value="<?php echo $username; ?>">
+	</div>
+	<div class="fieldwrapper">
+		<label for="password">Password</label>
+		<input type="password" name="password">
+	</div>
+
+	<input type="submit" value="LOGIN">
+</form>
