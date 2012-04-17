@@ -4,7 +4,7 @@ require_once 'classes/Request.php';
 require_once 'classes/Security.php';
 
 $session_variable = 'learninglamp';
-$db = new PDO("$pdo_driver:dbname=$pdo_dbname;host=$pdo_host:$pdo_port", $pdo_user, $pdo_password);
+$db = new PDO("$pdo_driver:dbname=$pdo_dbname;host=$pdo_host;port=$pdo_port", $pdo_user, $pdo_password);
 $request = new Request();
 if($request->getSessionVar($session_variable) === null) {
 	$request->setSessionVar($session_variable, array());
