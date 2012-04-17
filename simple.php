@@ -1,6 +1,6 @@
 <?php
 
-$projectname = 'student/123';
+$projectname = 'projects/123';
 $allowedfilenames = array(
 	 $projectname . '/index.php',
 	 $projectname . '/css/common.css',

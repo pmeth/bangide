@@ -15,8 +15,8 @@ if (get_magic_quotes_gpc()) {
     unset($process);
 }
 
-//$filename = 'student/123/index.php';
-$projectname = 'student/123';
+//$filename = 'projects/123/index.php';
+$projectname = 'projects/123';
 $filename = $projectname . $_POST['file'];
 $allowedfilenames = array(
 	 $projectname . '/index.php',
