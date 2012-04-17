@@ -51,6 +51,13 @@
 	font-size: 100%;
 }
 
+.ui-tabs .ui-tabs-nav li {
+	-moz-border-radius-topright: 7px;
+	-webkit-border-top-right-radius: 7px;
+	-khtml-border-top-right-radius: 7px;
+	border-top-right-radius: 7px;
+}
+
 .ui-tabs .ui-tabs-nav li a {
 	padding: 3px;
 	font-size: 75%;
