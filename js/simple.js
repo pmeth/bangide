@@ -17,10 +17,10 @@ $(document).ready(function () {
 		lineNumbers: true,
 		matchBrackets: true,
 		mode: "application/x-httpd-php",
-		indentUnit: 3,
 		indentWithTabs: true,
 		enterMode: "keep",
-		tabMode: "shift"
+		tabMode: "shift",
+		autofocus: true
 	});
 
 	$('#filetree').treeview({
@@ -28,4 +28,5 @@ $(document).ready(function () {
 	});
 
 	$("#tabs").tabs();
+
 });
