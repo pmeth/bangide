@@ -3,22 +3,35 @@
 	<head>
 		<title>Login</title>
 		<meta charset="ISO-8859-1">
+
+		<!-- PAGE SPECIFIC STYLES -->
+		<link rel="stylesheet" href="css/login.css">
 	</head>
 	<body>
+		<div id="container">
+			<?php echo loginerrors::render($loginerrors); ?>
+			<form method="post" action="<?php echo $request->getServerVar('PHP_SELF'); ?>">
+				<div class="fieldwrapper">
+					<label for="username">User</label>
+					<input type="text" name="username" value="<?php echo $username; ?>">
+				</div>
+				<div class="fieldwrapper">
+					<label for="password">Password</label>
+					<input type="password" name="password">
+				</div>
 
+				<div class="fieldwrapper">
+					<label for="submit">&nbsp;</label>
+					<input type="submit" value="LOGIN">
+				</div>
+			</form>
+		</div>
+		<!-- SCRIPTS -->
+		<!--[if lt IE 9]>
+				<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
 
-<?php echo loginerrors::render($loginerrors); ?>
-<form method="post" action="<?php echo $request->getServerVar('PHP_SELF'); ?>">
-	<div class="fieldwrapper">
-		<label for="username">User</label>
-		<input type="text" name="username" value="<?php echo $username; ?>">
-	</div>
-	<div class="fieldwrapper">
-		<label for="password">Password</label>
-		<input type="password" name="password">
-	</div>
-
-	<input type="submit" value="LOGIN">
-</form>
-</body>
+		<!-- PAGE SPECIFIC SCRIPT -->
+		<script src="js/login.js"></script>
+	</body>
 </html>
