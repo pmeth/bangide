@@ -3,6 +3,7 @@ var editor;
 
 $(document).ready(function () {
 	myLayout = $('body').layout({
+		spacing_open: 3,
 		west: {
 			size: '15%'
 		},
