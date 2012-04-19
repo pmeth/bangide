@@ -13,16 +13,16 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
- 
+
 	// AUTH_TYPE defines the login/startup behaviour of the application
     // NONE		= No userid/password is asked for (NOT recommended)
     // BASIC	= browser requests authentication dialog
     // LOGIN	= User enters userid and password manually
-	define('AUTH_TYPE', 'LOGIN');
+	define('AUTH_TYPE', 'NONE');
 
 	// avoid sending plain text login info for additional security (disabled for HTTPS automatically)
 	define('SECURE_LOGIN', TRUE);
-	
+
 	// AUTH_SERVER defines the name of mysql server for connections and authenticating users
 	// if AUTH_TYPE is set to LOGIN and there is no server defined in configuration (config/servers.php),
 	// then this will be used as default

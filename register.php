@@ -1,27 +1,31 @@
 <?php
 
 require_once 'includes/config.php';
-require_once 'templates/partials/loginerrors.php';
+require_once 'templates/partials/registererrors.php';
 
 $username = '';
-$loginerrors = array();
+$registererrors = array();
 
 if ($request->getPostVar('username') !== null && $request->getPostVar('password') !== null) {
 	$username = $request->getPostVar('username');
+	$password = $request->getPostVar('password');
 	$passwordhash = Security::getHash($request->getPostVar('password'), $security_salt);
 
 	$security = new Security($db);
-	if ($security->checkUsernameAndPasswordHash($username, $passwordhash)) {
+	if ($security->isValidUsername($username) && $security->isValidPassword($password) && $security->registerUser($username, $passwordhash)) {
 		$id = $security->getUserIdFromUsername($username);
-		$dbinfo = $project->getProjectFromUserId($id);
-		$session['db_user'] = $dbinfo->db_user;
-		$session['db_pass'] = $dbinfo->db_pass;
+
+		$session['db_user'] = $project->generateRandomAlpha(10);
+		$session['db_pass'] = $project->generateRandomAlpha(10);
+
 		$session['user'] = array(
 			 'id' => $id,
 			 'username' => $username,
 			 'passwordhash' => $passwordhash,
-			 'projectfolder' => $dbinfo->db_name,
+			 'projectfolder' => $project->generateNew($id, $session['db_user'], $session['db_pass']),
 		);
+
+
 		$requested_page = 'index.php';
 		if (isset($session['requested_page'])) {
 			$requested_page = $session['requested_page'];
@@ -32,9 +36,9 @@ if ($request->getPostVar('username') !== null && $request->getPostVar('password'
 		header('Location: ' . $requested_page);
 		exit;
 	} else {
-		$loginerrors[] = 'Wrong username or password';
+		$registererrors[] = 'The user was not able to be registered.  Please note the following rules: usernames must be unique, usernames must contain at least 3 characters, passwords must contain at least 6 characters';
 	}
 }
 
 
-require 'templates/login.html.twig';
+require 'templates/register.html.twig';

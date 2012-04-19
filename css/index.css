@@ -30,3 +30,12 @@
 	border: 0;
 	overflow: hidden;
 }
+
+#whoami {
+	float: right;
+	width: 200px;
+}
+
+.clearfix {
+	clear: both;
+}

@@ -42,7 +42,7 @@
 				else
 					$this->getAuthLogin();
 			}
-			
+
 			if (Session::get('auth', 'valid'))
 				return $this->setParameters();
 
@@ -52,7 +52,7 @@
 		public function getUserName() {
 			return $this->username;
 		}
-		
+
 		public function getError() {
 			return $this->error;
 		}
@@ -79,8 +79,10 @@
 					$server = $this->getDefaultServer();
 					$host = $server[1]['host'];
 					$driver = $server[1]['driver'];
-					$this->username = AUTH_LOGIN;
-					$this->password = AUTH_PASSWORD;
+					//$this->username = AUTH_LOGIN;
+					//$this->password = AUTH_PASSWORD;
+					$this->username = Session::get('learninglamp','db_user');
+					$this->password = Session::get('learninglamp','db_pass');
 					break;
 				case 'BASIC':
 					$server = $this->getDefaultServer();
@@ -120,7 +122,7 @@
 			Session::set('db', 'driver', $server[1]['driver']);
 			$this->db->disconnect();
 			header('Location: '.EXTERNAL_PATH);
-			return true;	
+			return true;
 		}
 
 		private function getAuthBasic() {
@@ -165,9 +167,9 @@
 
 			return false;
 		}
-		
+
 		private function getAuthSecureLogin() {
-			
+
 			if (isset($_POST['mywebsql_auth'])) {
 				$enc_lib = (extension_loaded('openssl') && extension_loaded('gmp')) ? "lib/external/jcryption.php"
 					: "lib/external/jcryption-legacy.php";
@@ -184,11 +186,11 @@
 				$server = $this->getServer( v($info['server']) );
 				$this->username = v($info['auth_user']);
 				$this->password = v($info['auth_pwd']);
-				
+
 				// extract encrypted variables for splash screen
 				$_REQUEST['server'] = v($info['server']);
 				$_REQUEST['lang'] = v($info['lang']);
-				
+
 				if ($this->db->connect($server[1], $this->username, $this->password)) {
 					Session::del('auth_enc');
 					Session::set('auth', 'valid', true);
@@ -206,27 +208,27 @@
 
 			return false;
 		}
-		
+
 		private function getServer( $selection ) {
 			$serverList = getServerList();
-			
+
 			// if only one server is defined, it is used
 			if( count($serverList) == 1) {
 				$server = key($serverList);
 				$host = current($serverList);
 				return array($server, $host);
 			}
-			
+
 			// return a server based on user's selection
 			foreach($serverList as $server => $host) {
 				if ($server == $selection)
 					return array($server, $host);
 			}
-			
+
 			// return default server info
 			return $this->getDefaultServer();
 		}
-		
+
 		private function getDefaultServer() {
 			$server_info = explode('|', AUTH_SERVER);
 			$host = array( 'host' => $server_info[0], 'driver' => $server_info[1] );

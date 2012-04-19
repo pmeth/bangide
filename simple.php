@@ -1,10 +1,12 @@
 <?php
+require_once 'includes/config.php';
 
-$projectname = 'projects/123';
+$projectname = 'projects' . DIRECTORY_SEPARATOR . $session['user']['projectfolder'];
 $allowedfilenames = array(
 	 $projectname . '/index.php',
 	 $projectname . '/css/common.css',
 	 $projectname . '/js/common.js',
+	 $projectname . '/includes/db.php',
 );
 
 $openfiles = array();

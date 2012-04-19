@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Login</title>
+		<title>Register</title>
 		<meta charset="ISO-8859-1">
 
 		<!-- PAGE SPECIFIC STYLES -->
-		<link rel="stylesheet" href="css/login.css">
+		<link rel="stylesheet" href="css/register.css">
 	</head>
 	<body>
 		<div id="container">
-			<div class="center"><h2>Login</h2></div>
-			<?php echo loginerrors::render($loginerrors); ?>
+			<div class="center"><h2>New User Registration</h2></div>
+			<?php echo registererrors::render($registererrors); ?>
 			<form method="post" action="<?php echo $request->getServerVar('PHP_SELF'); ?>">
 				<div class="fieldwrapper">
 					<label for="username">User</label>
@@ -23,11 +23,11 @@
 
 				<div class="fieldwrapper">
 					<label for="submit">&nbsp;</label>
-					<input type="submit" value="LOGIN">
+					<input type="submit" value="Register">
 				</div>
 			</form>
 			<div class="center">
-				<a href="register.php">Click here to register</a>
+				<a href="login.php">Click here to login</a>
 			</div>
 		</div>
 		<!-- SCRIPTS -->
@@ -36,6 +36,6 @@
 		<![endif]-->
 
 		<!-- PAGE SPECIFIC SCRIPT -->
-		<script src="js/login.js"></script>
+		<script src="js/register.js"></script>
 	</body>
 </html>

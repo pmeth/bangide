@@ -2,13 +2,17 @@
 require_once 'db_connect.php';
 require_once 'classes/Request.php';
 require_once 'classes/Security.php';
+require_once 'classes/Project.php';
 
 $session_variable = 'learninglamp';
 $db = new PDO("$pdo_driver:dbname=$pdo_dbname;host=$pdo_host;port=$pdo_port", $pdo_user, $pdo_password);
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 $request = new Request();
 if($request->getSessionVar($session_variable) === null) {
 	$request->setSessionVar($session_variable, array());
 }
+$project = new Project($db);
 
 $session = $request->getSessionVar($session_variable);
 
@@ -25,6 +29,7 @@ $filepath_relative = str_replace('\\','/', $filepath_relative);
 
 $anonymous_pages = array(
 	 '/login.php',
+	 '/register.php',
 	 '/utilities/sessionviewer.php',
 );
 
