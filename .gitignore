@@ -3,3 +3,4 @@
 /.git-rewrite/
 /includes/db_connect.php
 /projects/
+/screenshots/

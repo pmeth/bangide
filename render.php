@@ -1,4 +1,5 @@
 <?php
+require_once 'includes/config.php';
 if (get_magic_quotes_gpc()) {
     $process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
     while (list($key, $val) = each($process)) {
@@ -15,13 +16,13 @@ if (get_magic_quotes_gpc()) {
     unset($process);
 }
 
-//$filename = 'projects/123/index.php';
-$projectname = 'projects/123';
+$projectname = 'projects' . DIRECTORY_SEPARATOR . $session['user']['projectfolder'];
 $filename = $projectname . $_POST['file'];
 $allowedfilenames = array(
 	 $projectname . '/index.php',
 	 $projectname . '/css/common.css',
 	 $projectname . '/js/common.js',
+	 $projectname . '/includes/db.php',
 );
 
 if(!in_array($filename,$allowedfilenames)) {
