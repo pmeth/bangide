@@ -79,6 +79,14 @@ class Project {
 				  'contents' => "<?php\n\n\$db_host = 'localhost';\n\$db_name = '$db_name';\n\$db_user = '$db_user';\n\$db_pass = '$db_pass';\n?>"
 			 ),
 			 array(
+				  'name' => 'includes' . DIRECTORY_SEPARATOR . 'header.php',
+				  'contents' => ''
+			 ),
+			 array(
+				  'name' => 'includes' . DIRECTORY_SEPARATOR . 'footer.php',
+				  'contents' => ''
+			 ),
+			 array(
 				  'name' => 'js' . DIRECTORY_SEPARATOR . 'common.js',
 				  'contents' => ""
 			 ),
