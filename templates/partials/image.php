@@ -14,7 +14,7 @@ class tabs {
 			$links .= "<li><a href='#tabs-$counter'>$filename</a> <a href='#' id='close-tabs-$counter' class='close-tabs'>x</a></li>";
 			$divs .= "
 				<div id='tabs-$counter'>
-					<img src='$projectpath . $filename' />
+					<img src='$projectpath$filename' />
 				</div>
 			";
 		}
