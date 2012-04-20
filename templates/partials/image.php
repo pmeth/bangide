@@ -12,14 +12,9 @@ class tabs {
 		$divs = "";
 		foreach ($openfiles as $counter => $filename) {
 			$links .= "<li><a href='#tabs-$counter'>$filename</a> <a href='#' id='close-tabs-$counter' class='close-tabs'>x</a></li>";
-			$content = file_get_contents($filetreepath . $filename);
 			$divs .= "
 				<div id='tabs-$counter'>
-					<form action='render.php' target='rendered' method='post'>
-						<textarea name='code' id='tabs1-code' class='code-editor'>$content</textarea><br />
-						<input type='hidden' name='file' value='$filename' />
-						<input type='submit' name='submit' value='SAVE &amp; RUN' />
-					</form>
+					<img src='$projectpath . $filename' />
 				</div>
 			";
 		}

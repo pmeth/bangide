@@ -63,7 +63,10 @@ class Project {
 	protected function _generateFiles($project, $db_name = 'DATABASE', $db_user = 'USERNAME', $db_pass = 'PASSWORD') {
 		// make the directories in order such that top level folders get created first
 		$folders = array(
-			 'includes'
+			 'includes',
+			 'images',
+			 'js',
+			 'css',
 		);
 
 		$files = array(
@@ -74,6 +77,18 @@ class Project {
 			 array(
 				  'name' => 'includes' . DIRECTORY_SEPARATOR . 'db.php',
 				  'contents' => "<?php\n\n\$db_host = 'localhost';\n\$db_name = '$db_name';\n\$db_user = '$db_user';\n\$db_pass = '$db_pass';\n?>"
+			 ),
+			 array(
+				  'name' => 'js' . DIRECTORY_SEPARATOR . 'common.js',
+				  'contents' => ""
+			 ),
+			 array(
+				  'name' => 'images' . DIRECTORY_SEPARATOR . 'logo.gif',
+				  'contents' => file_get_contents('http://tug.ca/Graphics/TUG_Live-Logo_150x95.gif')
+			 ),
+			 array(
+				  'name' => 'css' . DIRECTORY_SEPARATOR . 'common.css',
+				  'contents' => ""
 			 ),
 		);
 

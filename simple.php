@@ -7,6 +7,7 @@ $allowedfilenames = array(
 	 $projectname . '/css/common.css',
 	 $projectname . '/js/common.js',
 	 $projectname . '/includes/db.php',
+	 $projectname . '/images/logo.gif',
 );
 
 $openfiles = array();
@@ -31,5 +32,9 @@ foreach ($openfiles as $openfile) {
 $filetreepath = realpath(__DIR__ . '/' . $projectname);
 
 require_once 'templates/partials/filetree.php';
-require_once 'templates/partials/tabs.php';
+if($openfiles[0] == '/images/logo.gif') {
+	require_once 'templates/partials/image.php';
+} else {
+	require_once 'templates/partials/tabs.php';
+}
 require 'templates/simple.html.twig';
