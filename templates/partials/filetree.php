@@ -50,7 +50,6 @@ class filetree {
 				$relativefilename = self::getRelativePath("$path/$filename", $basepath);
 				$rendered .= "<li><span class='file'><a href='simple.php?file=/$relativefilename'>$filename</a></span></li>";
 			}
-			$rendered .= "</li>";
 		}
 
 		$rendered .= "</ul>";
