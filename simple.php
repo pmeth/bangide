@@ -29,6 +29,10 @@ foreach ($openfiles as $openfile) {
 	}
 }
 
+if(strstr($openfile, '..') !== false) {
+	die('Sorry, you have tried to open an invalid filename: ' . $projectname . $openfile);
+}
+
 $filetreepath = realpath(__DIR__ . '/' . $projectname);
 
 require_once 'templates/partials/filetree.php';
