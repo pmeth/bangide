@@ -25,8 +25,7 @@ $(document).ready(function () {
 		});
 	}
 	$('#filetree').treeview({
-		collapsed: true,
-		prerendered: true
+		collapsed: true
 	});
 
 	$("#tabs").tabs();
