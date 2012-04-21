@@ -26,7 +26,7 @@ $allowedfilenames = array(
 );
 
 if(!in_array($filename,$allowedfilenames)) {
-	die('Sorry, you have tried to write to an invalid filename: ' . $filename);
+//	die('Sorry, you have tried to write to an invalid filename: ' . $filename);
 }
 $fp = fopen($filename, 'w');
 fwrite($fp, $_POST['code']);

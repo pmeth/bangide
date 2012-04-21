@@ -25,7 +25,7 @@ $openfiles[] = '/css/common.css';
 
 foreach ($openfiles as $openfile) {
 	if (!in_array($projectname . $openfile, $allowedfilenames)) {
-		die('Sorry, you have tried to open an invalid filename: ' . $projectname . $openfile);
+	//	die('Sorry, you have tried to open an invalid filename: ' . $projectname . $openfile);
 	}
 }
 
