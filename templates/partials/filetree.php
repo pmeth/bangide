@@ -35,7 +35,7 @@ class filetree {
 		closedir($dir);
 
 		// Sort the filenames in alphabetical order
-		sort($filenames);
+		//sort($filenames);
 
 		// Display the filenames, and process any subfolders
 
