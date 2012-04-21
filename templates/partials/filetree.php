@@ -43,7 +43,7 @@ class filetree {
 
 		foreach ($filenames as $filename) {
 			if (substr($filename, -1) == '/') {
-				$rendered .= "<li><span class='folder'>$filename</span>";
+				$rendered .= "<li><span class='folder'>" . substr($filename, 0, strlen($filename) - 1) . "</span>";
 				$rendered .= self::render("$path/" . substr($filename, 0, -1), $basepath);
 				$rendered .= "</li>";
 			} else {
