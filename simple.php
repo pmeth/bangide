@@ -2,18 +2,11 @@
 require_once 'includes/config.php';
 
 $projectname = 'projects' . DIRECTORY_SEPARATOR . $session['user']['projectfolder'];
-$allowedfilenames = array(
-	 $projectname . '/index.php',
-	 $projectname . '/css/common.css',
-	 $projectname . '/js/common.js',
-	 $projectname . '/includes/db.php',
-	 $projectname . '/images/logo.gif',
-);
 
 $openfiles = array();
 
 if (empty($_GET['file'])) {
-	$openfiles[] = '/index.php';
+	$openfiles[] = '/exercise1/index.php';
 } else {
 	$openfiles[] = $_GET['file'];
 }
@@ -22,12 +15,6 @@ if (empty($_GET['file'])) {
 $openfiles[] = '/css/common.css';
 
  */
-
-foreach ($openfiles as $openfile) {
-	if (!in_array($projectname . $openfile, $allowedfilenames)) {
-	//	die('Sorry, you have tried to open an invalid filename: ' . $projectname . $openfile);
-	}
-}
 
 if(strstr($openfile, '..') !== false) {
 	die('Sorry, you have tried to open an invalid filename: ' . $projectname . $openfile);
