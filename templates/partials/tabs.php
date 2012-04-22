@@ -17,8 +17,14 @@ class tabs {
 				<div id='tabs-$counter'>
 					<form action='render.php' target='rendered' method='post'>
 						<textarea name='code' id='tabs1-code' class='code-editor'>$content</textarea><br />
-						<input type='hidden' name='file' value='$filename' />
-						<input type='submit' name='submit' value='SAVE &amp; RUN' />
+                        After Save: 
+                        <select name='action'>
+                            <option>Run This File</option>
+                            <option>Run Index File</option>
+                            <option>Do Nothing</option>
+                        </select>
+                        <input type='hidden' name='file' value='$filename' />
+						<input type='submit' name='submit' value='SAVE' />
 					</form>
 				</div>
 			";

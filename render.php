@@ -18,24 +18,26 @@ if (get_magic_quotes_gpc()) {
 
 $projectname = 'projects' . DIRECTORY_SEPARATOR . $session['user']['projectfolder'];
 $filename = $projectname . $_POST['file'];
-$allowedfilenames = array(
-	 $projectname . '/index.php',
-	 $projectname . '/css/common.css',
-	 $projectname . '/js/common.js',
-	 $projectname . '/includes/db.php',
-);
-
-if(!in_array($filename,$allowedfilenames)) {
-//	die('Sorry, you have tried to write to an invalid filename: ' . $filename);
-}
 
 if(strstr($filename, '..') !== false) {
-	die('Sorry, you have tried to write to an invalid filename: ' . $projectname . $openfile);
+	die('Sorry, you have tried to write to an invalid filename: ' . $filename);
 }
 
 $fp = fopen($filename, 'w');
 fwrite($fp, $_POST['code']);
 fclose($fp);
 
-header('Location: ' . $projectname);
-exit;
+$explodedfile = explode(DIRECTORY_SEPARATOR, $_POST['file']);
+$exercisedirectory = "$projectname/$explodedfile[1]";
+switch ($_POST['action']) {
+    case 'Run This File':
+        header('Location: ' . $projectname . $_POST['file']);
+        break;
+    case 'Run Index File':
+        header('Location: ' . $exercisedirectory);
+        break;
+
+    default:
+        // do nothing
+        break;
+}
