@@ -13,7 +13,7 @@ class tabs {
         foreach ($openfiles as $counter => $filename) {
             $links .= "<li><a href='#tabs-$counter'>$filename</a> <a href='#' id='close-tabs-$counter' class='close-tabs'>x</a></li>";
             $content = file_get_contents($filetreepath . $filename);
-            
+            $content = htmlentities($content);
             $divs .= "
 				<div id='tabs-$counter'>
 					<form action='render.php' target='rendered' method='post'>
