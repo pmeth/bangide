@@ -1,5 +1,5 @@
 <?php
-include('includes/config.php');
+include 'includes/db.php';
 	
 $query="
 	UPDATE
@@ -14,5 +14,5 @@ $query="
 $result=mysql_query($query,$link)
 	or die("Update Failed: " . $query . mysql_error());
 
-header("Location:rsvplist.php");
+header("Location:list.php");
 ?>
