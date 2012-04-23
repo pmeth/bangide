@@ -27,7 +27,7 @@ $fp = fopen($filename, 'w');
 fwrite($fp, $_POST['code']);
 fclose($fp);
 
-$explodedfile = explode(DIRECTORY_SEPARATOR, $_POST['file']);
+$explodedfile = explode('/', $_POST['file']);
 $exercisedirectory = "$projectname/$explodedfile[1]";
 switch ($_POST['action']) {
     case 'Run This File':
