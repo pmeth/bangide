@@ -16,8 +16,8 @@ $openfiles[] = '/css/common.css';
 
  */
 
-if(strstr($openfile, '..') !== false) {
-	die('Sorry, you have tried to open an invalid filename: ' . $projectname . $openfile);
+if(strstr($openfiles[0], '..') !== false) {
+	die('Sorry, you have tried to open an invalid filename: ' . $projectname . $openfiles[0]);
 }
 
 $filetreepath = realpath(__DIR__ . '/' . $projectname);
