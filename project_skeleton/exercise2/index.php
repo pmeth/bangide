@@ -1,17 +1,17 @@
 <?php
 /*-------------------------------------------------------
 1. create an html page with 4 divs
-DIV 1:
+DIV 1 (class="header"):
 displays the TUG logo
 
-DIV 2:
+DIV 2 (class="navigation"):
 displays a menu with 3 links separated by double colon (::)
 HOME (index.php) :: PRODUCTS (products.php) :: CONTACT US (contactus.php)
 
-DIV 3:
+DIV 3 (class="content"):
 displays a heading saying HOME, then a welcome message
 
-DIV 4:
+DIV 4 (class="footer"):
 displays a copyright followed by the current year followed by a company name (TUG maybe?)
 hint: the html code &copy; will display a copyright symbol
 hint: the php function date('Y') will give the current year
@@ -22,8 +22,9 @@ save and run to make sure it looks right
 2. copy the start of your html from index.php along with the first 2 divs.
 open header.php and paste what you just copied
 
-save and run the header file to see what the header will look like
-(note this file is not a full html document, because there is no </body> or </html>
+save and run the header file (change the pulldown to "Run This File") to see what the 
+header will look like
+Note: this file is not a full html document, because there is no </body> or </html>
 but it should still show up fine in the browser
 
 ---------------------------------------------------------
