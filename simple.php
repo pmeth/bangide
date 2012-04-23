@@ -23,7 +23,7 @@ if(strstr($openfiles[0], '..') !== false) {
 $filetreepath = realpath(__DIR__ . '/' . $projectname);
 
 require_once 'templates/partials/filetree.php';
-if($openfiles[0] == '/images/logo.gif') {
+if(substr($openfiles[0], -4) == '.gif') {
 	require_once 'templates/partials/image.php';
 } else {
 	require_once 'templates/partials/tabs.php';
