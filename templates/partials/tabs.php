@@ -24,6 +24,11 @@ class tabs {
                             <option>Run This File</option>
                             <option>Do Nothing</option>
                         </select>
+                        Window: 
+                        <select name='window' id='windowselect'>
+                            <option value='rendered'>Side Window</option>
+                            <option value='_blank'>New Window</option>
+                        </select>
                         <input type='hidden' name='file' value='$filename' />
 						<input type='submit' name='submit' value='SAVE' />
 					</form>
