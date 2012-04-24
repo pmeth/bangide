@@ -1,4 +1,5 @@
 <?php
+
 require_once 'includes/config.php';
 
 $projectname = 'projects' . DIRECTORY_SEPARATOR . $session['user']['projectfolder'];
@@ -6,26 +7,30 @@ $projectname = 'projects' . DIRECTORY_SEPARATOR . $session['user']['projectfolde
 $openfiles = array();
 
 if (empty($_GET['file'])) {
-	$openfiles[] = '/exercise1/index.php';
+   if (file_exists($projectname . '/exercise1/index.php')) {
+      $openfiles[] = '/exercise1/index.php';
+   } elseif (file_exists($projectname . '/lesson1/index.html')) {
+      $openfiles[] = '/lesson1/index.html';
+   }
 } else {
-	$openfiles[] = $_GET['file'];
+   $openfiles[] = $_GET['file'];
 }
 
 /* too add some more files, just add to the array like this
-$openfiles[] = '/css/common.css';
+  $openfiles[] = '/css/common.css';
 
  */
 
-if(strstr($openfiles[0], '..') !== false) {
-	die('Sorry, you have tried to open an invalid filename: ' . $projectname . $openfiles[0]);
+if (strstr($openfiles[0], '..') !== false) {
+   die('Sorry, you have tried to open an invalid filename: ' . $projectname . $openfiles[0]);
 }
 
 $filetreepath = realpath(__DIR__ . '/' . $projectname);
 
 require_once 'templates/partials/filetree.php';
-if(substr($openfiles[0], -4) == '.gif') {
-	require_once 'templates/partials/image.php';
+if (substr($openfiles[0], -4) == '.gif') {
+   require_once 'templates/partials/image.php';
 } else {
-	require_once 'templates/partials/tabs.php';
+   require_once 'templates/partials/tabs.php';
 }
 require 'templates/simple.html.twig';
