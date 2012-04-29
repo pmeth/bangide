@@ -21,8 +21,8 @@ CREATE TABLE `project` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) NOT NULL,
   `db_name` varchar(100) NOT NULL,
-  `db_user` varchar(100) NOT NULL,
-  `db_pass` varchar(100) NOT NULL,
+  `db_user` varchar(100),
+  `db_pass` varchar(100),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

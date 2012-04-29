@@ -21,7 +21,10 @@ class Project {
         $project = $this->getRandomDirectoryName();
 
         $this->_generateFiles($project, $project, $db_user, $db_pass);
-        $this->_generateDatabase($project, $db_user, $db_pass);
+        if (!$this->_generateDatabase($project, $db_user, $db_pass)) {
+            $db_user = null;
+            $db_pass = null;
+        }
         $stmt = $this->_db->prepare('INSERT INTO ' . $this->_projecttable . ' SET user_id = :user_id, db_name = :db_name, db_user = :db_user, db_pass = :db_pass');
         $stmt->execute(array(
             ':db_name' => $project,
@@ -78,11 +81,15 @@ class Project {
     }
 
     protected function _generateDatabase($project, $username, $password) {
-
-
-        $this->_db->exec("CREATE DATABASE `$project`");
+        try {
+            $this->_db->exec("CREATE DATABASE `$project`");
+        }
+        catch (PDOException $e) {
+            return false;
+        }
         $this->_db->exec("CREATE USER '$username'@'localhost' IDENTIFIED BY '$password'");
         $this->_db->exec("GRANT ALL PRIVILEGES ON `$project`.* TO '$username'@'localhost'");
+        return true;
     }
 
     protected function _recursiveCopy($source, $dest, $diffDir = '') {
