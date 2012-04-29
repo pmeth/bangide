@@ -90,7 +90,11 @@ class Project {
         if (!$diffDir)
             $diffDir = $source;
 
-        mkdir($dest . '/' . $diffDir);
+        $pathName = $dest . '/' . $diffDir;
+        if (!@mkdir($pathName))
+        {
+            throw new Exception("Unable to create directory $pathName");
+        }
 
         while ($res = readdir($sourceHandle)) {
             if ($res == '.' || $res == '..')
