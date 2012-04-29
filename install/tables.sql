@@ -33,7 +33,8 @@ CREATE TABLE `user` (
   `is_active` enum('false','true') NOT NULL DEFAULT 'true',
   `username` varchar(100) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `UniqueActiveUsers` (`is_active` ASC, `username` ASC) 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
