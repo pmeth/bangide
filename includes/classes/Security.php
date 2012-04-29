@@ -47,6 +47,10 @@ class Security {
 
         //Removed SELECT from user table in favour of unique index in db.
         //Cleaner and avoids race condition.
+        //Except that now if a duplicate user ID is added after first being deactivated then, then
+        //deactivating again will cause a constraint violation.  Maybe not so clean - but I'd prefer
+        //to revisit the use of is_active to the SELECT approach.  Doesn't appear to be a way to
+        //deactivate yet anyway.
 
 		return true;
 
