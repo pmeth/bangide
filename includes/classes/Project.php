@@ -24,6 +24,8 @@ class Project {
         if (!$this->_generateDatabase($project, $db_user, $db_pass)) {
             $db_user = null;
             $db_pass = null;
+            $session['db_user'] = null;
+            $session['db_pass'] = null;
         }
         $stmt = $this->_db->prepare('INSERT INTO ' . $this->_projecttable . ' SET user_id = :user_id, db_name = :db_name, db_user = :db_user, db_pass = :db_pass');
         $stmt->execute(array(
