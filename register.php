@@ -1,6 +1,12 @@
 <?php
 
 require_once 'includes/config.php';
+if(!$registration_enabled) {
+	require 'templates/registration_disabled.html.twig';
+	exit;
+} 
+
+
 require_once 'templates/partials/registererrors.php';
 
 $username = '';
@@ -22,7 +28,7 @@ if ($request->getPostVar('username') !== null && $request->getPostVar('password'
 			 'id' => $id,
 			 'username' => $username,
 			 'passwordhash' => $passwordhash,
-			 'projectfolder' => $project->generateNew($id, $session['db_user'], $session['db_pass']),
+			 'projectfolder' => $project->generateNew($id, $database_enabled, $session['db_user'], $session['db_pass']),
 		);
 
 

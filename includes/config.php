@@ -16,6 +16,11 @@ $project = new Project($db);
 
 $session = $request->getSessionVar($session_variable);
 
+// set this to false to disable new users from registering
+$appname = "Bang IDE";
+$registration_enabled = true;
+$database_enabled = true;
+
 // START - FIGURE OUT THE FILENAME AND WHETHER IT REQUIRES LOGIN
 $configfile = '/includes/config.php';
 $approot = realpath(substr(__FILE__, 0, strlen(__FILE__) - strlen($configfile)));

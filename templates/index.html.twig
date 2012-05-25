@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Online IDE</title>
+<head>
+<meta charset="utf-8">
+	<title><?php echo $appname; ?></title>
 
-		<!-- LAYOUT v 1.3.0 -->
-		<link rel="stylesheet" href="lib/css/layout-default-latest.css">
+<!-- LAYOUT v 1.3.0 -->
+<link rel="stylesheet" href="lib/css/layout-default-latest.css">
 
-		<!-- PAGE SPECIFIC STYLES -->
-		<link rel="stylesheet" href="css/index.css">
+<!-- PAGE SPECIFIC STYLES -->
+<link rel="stylesheet" href="css/index.css">
 
-	</head>
-	<body>
-		<div class="ui-layout-north">
-			<div id="whoami">Logged in as: <?php echo $loggedinuser; ?></div>
-			<ul id="topnav">
-				<li><a href="simple.php" target="maincontent">File Editor</a></li>
-				<li><a href="mywebsql/" target="maincontent">Database</a></li>
-				<li><a href="logout.php">Logout</a></li>
-			</ul>
-			<div class="clearfix"></div>
-		</div>
-		<div class="ui-layout-center">
-			<iframe name="maincontent" id="maincontent" src="simple.php"></iframe>
-		</div>
+</head>
+<body>
+<div class="ui-layout-north">
+<div id="whoami">Logged in as: <?php echo $loggedinuser; ?></div>
+<ul id="topnav">
+<li><a href="simple.php" target="maincontent">File Editor</a></li>
+<?php if ($database_enabled) : ?>
+<li><a href="mywebsql/" target="maincontent">Database</a></li>
+<?php endif; ?>
+<li><a href="logout.php">Logout</a></li>
+</ul>
+<div class="clearfix"></div>
+</div>
+<div class="ui-layout-center">
+<iframe name="maincontent" id="maincontent" src="simple.php"></iframe>
+</div>
 
-		<!-- SCRIPTS -->
-		<!--[if lt IE 9]>
-				<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
+<!-- SCRIPTS -->
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 
-		<!-- JQUERY v 1.7.2 -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<!-- JQUERY v 1.7.2 -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 
-		<!-- LAYOUT v 1.3.0 -->
-		<script src="lib/js/jquery-ui-1.8.16.js"></script>
-		<script src="lib/js/jquery.layout-1.3.0-rc30.4.js"></script>
+<!-- LAYOUT v 1.3.0 -->
+<script src="lib/js/jquery-ui-1.8.16.js"></script>
+<script src="lib/js/jquery.layout-1.3.0-rc30.4.js"></script>
 
-		<!-- PAGE SPECIFIC SCRIPT -->
-		<script src="js/index.js"></script>
-	</body>
+<!-- PAGE SPECIFIC SCRIPT -->
+<script src="js/index.js"></script>
+</body>
 </html>

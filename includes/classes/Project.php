@@ -17,12 +17,15 @@ class Project {
         $this->_projectdirectory = $projectdirectory;
     }
 
-    public function generateNew($user_id, $db_user, $db_pass) {
+    public function generateNew($user_id, $database_enabled, $db_user = null, $db_pass = null) {
         $project = $this->getRandomDirectoryName();
 
-        $this->_generateFiles($project, $project, $db_user, $db_pass);
-        $this->_generateDatabase($project, $db_user, $db_pass);
-        $stmt = $this->_db->prepare('INSERT INTO ' . $this->_projecttable . ' SET user_id = :user_id, db_name = :db_name, db_user = :db_user, db_pass = :db_pass');
+        $this->_generateFiles($project);
+	if ($database_enabled) {
+		$this->_writeDatabaseConfigFile($project, $project, $db_user, $db_pass);
+        	$this->_generateDatabase($project, $db_user, $db_pass);
+        }
+	$stmt = $this->_db->prepare('INSERT INTO ' . $this->_projecttable . ' SET user_id = :user_id, db_name = :db_name, db_user = :db_user, db_pass = :db_pass');
         $stmt->execute(array(
             ':db_name' => $project,
             ':db_user' => $db_user,
@@ -31,6 +34,9 @@ class Project {
         ));
         return $project;
     }
+
+    public function setDatabaseInfo($db_name, $db_user, $db_pass) {
+}
 
     public function generateRandomAlpha($length) {
         $string = "";
@@ -60,8 +66,11 @@ class Project {
         return $stmt->fetchObject();
     }
 
-    protected function _generateFiles($project, $db_name = 'DATABASE', $db_user = 'USERNAME', $db_pass = 'PASSWORD') {
+    protected function _generateFiles($project)  {
         $this->_recursiveCopy('project_skeleton', $this->_projectdirectory, $project);
+    }
+
+    protected function _writeDatabaseConfigFile($project, $db_name = 'DATABASE', $db_user = 'USERNAME', $db_pass = 'PASSWORD'){
         $contents = "<?php
 \$db_host = 'localhost';
 \$db_name = '$db_name';
