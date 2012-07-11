@@ -1,78 +1,79 @@
 #code_wrapper {
-	float: left;
-	width: 100%;
+   float: left;
+   width: 100%;
 }
 #code_wrapper form {
-	height: 100%;
-	width: 100%;
+   height: 100%;
+   width: 100%;
 }
 .code-editor {
-	height: 1000px;
-	width: 100%;
+   width: 100%;
 
 }
 #rendered {
-	height: 95%;
-	width: 100%;
-	border: 0;
+   height: 95%;
+   width: 100%;
+   border: 0;
 }
 
 .CodeMirror-scroll {
-	height: auto;
-	overflow-y: hidden;
-	overflow-x: auto;
-	width: 100%;
+   max-height: 700px;
+   width: 100%;
 }
 
 .ui-layout-pane {
-	padding: 0;
+   padding: 0;
 }
 
 .filetree {
-	font-size: 75%;
+   font-size: 75%;
 
 }
 
 .filetree a {
-	text-decoration: none;
-	color: black;
+   text-decoration: none;
+   color: black;
 }
 
 .filetree a:hover {
-	text-decoration: underline;
-	color: red;
+   text-decoration: underline;
+   color: red;
 }
 
 /* some changes to jquery-ui tabs styling */
 .ui-tabs {
-	padding: 0;
-	height: 100%;
-	border: 0;
-	font-size: 100%;
+   padding: 0;
+   height: 100%;
+   border: 0;
+   font-size: 100%;
 }
 
 .ui-tabs .ui-tabs-nav li {
-	-moz-border-radius-topright: 7px;
-	-webkit-border-top-right-radius: 7px;
-	-khtml-border-top-right-radius: 7px;
-	border-top-right-radius: 7px;
+   -moz-border-radius-topright: 7px;
+   -webkit-border-top-right-radius: 7px;
+   -khtml-border-top-right-radius: 7px;
+   border-top-right-radius: 7px;
 }
 
 .ui-tabs .ui-tabs-nav li a {
-	padding: 3px;
-	font-size: 75%;
-	font-weight: bold;
+   padding: 3px;
+   font-size: 75%;
+   font-weight: bold;
 }
 
 .ui-tabs .ui-tabs-panel {
-	padding: 0;
+   padding: 0;
 }
 
 .windowheading {
-	padding: 3px 10px;
-	background-color: #06b;
-	color: white;
-	font-weight: bold;
-	font-size: 75%;
+   padding: 3px 10px;
+   background-color: #06b;
+   color: white;
+   font-weight: bold;
+   font-size: 75%;
 }
 
+.treeview a.selected {
+   background-color: #06b;
+   color: white;
+}

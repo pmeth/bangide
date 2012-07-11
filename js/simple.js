@@ -30,4 +30,8 @@ $(document).ready(function () {
 
 	$("#tabs").tabs();
 
+   $("#windowselect").change(function() {
+      console.log('hi');
+      $(this).parent().attr('target',$(this).val());
+   });
 });

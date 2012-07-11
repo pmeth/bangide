@@ -10,22 +10,23 @@
 <!-- PAGE SPECIFIC STYLES -->
 <link rel="stylesheet" href="css/index.css">
 
-</head>
-<body>
-<div class="ui-layout-north">
-<div id="whoami">Logged in as: <?php echo $loggedinuser; ?></div>
-<ul id="topnav">
-<li><a href="simple.php" target="maincontent">File Editor</a></li>
-<?php if ($database_enabled) : ?>
-<li><a href="mywebsql/" target="maincontent">Database</a></li>
-<?php endif; ?>
-<li><a href="logout.php">Logout</a></li>
-</ul>
-<div class="clearfix"></div>
-</div>
-<div class="ui-layout-center">
-<iframe name="maincontent" id="maincontent" src="simple.php"></iframe>
-</div>
+	</head>
+	<body>
+		<div class="ui-layout-north">
+			<div id="whoami">Logged in as: <?php echo $loggedinuser; ?></div>
+			<ul id="topnav">
+				<li><a href="simple.php" target="maincontent">File Editor</a></li>
+				<?php if ($database_enabled) : ?>
+					<li><a href="mywebsql/" target="maincontent">Database</a></li>
+				<?php endif; ?>
+				<li><a href="logout.php">Logout</a></li>
+				<li><a href="http://twitter.github.com/bootstrap/index.html" target="rendered">Bootstrap Website</a></li>
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+		<div class="ui-layout-center">
+			<iframe name="maincontent" id="maincontent" src="simple.php"></iframe>
+		</div>
 
 <!-- SCRIPTS -->
 <!--[if lt IE 9]>

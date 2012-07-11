@@ -13,11 +13,17 @@ class filetree {
 	 * @param type $basepath
 	 * @return string
 	 */
-	static function render($path, $basepath) {
-
+	static function render($path, $basepath, $openfile) {
+      if($openfile[0] == '/') {
+         //initially openfile will come in with a leading /.  Let's get rid of it to improve comparisons
+         $openfile = substr($openfile,1);
+      }
+      
 		// Open the folder
-		if (!( $dir = opendir($path) ))
+		if (!( $dir = opendir($path) )) {
 			die("Can't open $path");
+      }
+      
 		$filenames = array();
 
 		// Read the contents of the folder, ignoring '.' and '..', and
@@ -43,12 +49,21 @@ class filetree {
 
 		foreach ($filenames as $filename) {
 			if (substr($filename, -1) == '/') {
-				$rendered .= "<li><span class='folder'>" . substr($filename, 0, strlen($filename) - 1) . "</span>";
-				$rendered .= self::render("$path/" . substr($filename, 0, -1), $basepath);
+				$relativefilename = self::getRelativePath("$path/$filename", $basepath);
+            $open = "";
+            if(substr($openfile, 0, strlen($relativefilename)) == $relativefilename) {
+               $open = "class='open'";
+            }
+				$rendered .= "<li $open><span class='folder'>" . substr($filename, 0, strlen($filename) - 1) . "</span>";
+				$rendered .= self::render("$path/" . substr($filename, 0, -1), $basepath, $openfile);
 				$rendered .= "</li>";
 			} else {
 				$relativefilename = self::getRelativePath("$path/$filename", $basepath);
-				$rendered .= "<li><span class='file'><a href='simple.php?file=/$relativefilename'>$filename</a></span></li>";
+            $open = "";
+            if($openfile == $relativefilename) {
+               $open = "class='selected'";
+            }
+				$rendered .= "<li><span class='file'><a $open href='simple.php?file=/$relativefilename'>$filename</a></span></li>";
 			}
 		}
 
