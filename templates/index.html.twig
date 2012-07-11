@@ -16,7 +16,7 @@
 			<div id="whoami">Logged in as: <?php echo $loggedinuser; ?></div>
 			<ul id="topnav">
 				<li><a href="simple.php" target="maincontent">File Editor</a></li>
-				<?php if ($database_enabled) : ?>
+				<?php if ($database_enabled && $dbuser) : ?>
 					<li><a href="mywebsql/" target="maincontent">Database</a></li>
 				<?php endif; ?>
 				<li><a href="logout.php">Logout</a></li>

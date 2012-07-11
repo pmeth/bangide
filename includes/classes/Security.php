@@ -29,8 +29,13 @@ class Security {
 	}
 
 	public function registerUser($username, $passwordhash) {
-		$stmt = $this->_db->prepare('INSERT INTO ' . $this->_usertable . ' SET username=:username, password=:passwordhash');
-		$stmt->execute(array(':username' => $username, ':passwordhash' => $passwordhash));
+        try {
+            $stmt = $this->_db->prepare('INSERT INTO ' . $this->_usertable . ' SET username=:username, password=:passwordhash');
+            $stmt->execute(array(':username' => $username, ':passwordhash' => $passwordhash));
+        }
+        catch (PDOException $e) {
+            throw $e->errorInfo[1] == 1062 ? new Exception("The user id '$username' is not available.") : $e;
+        }
 		return true;
 	}
 
@@ -40,12 +45,12 @@ class Security {
 			return false;
 		}
 
-		$stmt = $this->_db->prepare('SELECT * FROM ' . $this->_usertable . ' WHERE is_active="true" AND username=:username');
-		$stmt->execute(array(':username' => $username));
-		$user = $stmt->fetchAll();
-		if(count($user)) {
-			return false;
-		}
+        //Removed SELECT from user table in favour of unique index in db.
+        //Cleaner and avoids race condition.
+        //Except that now if a duplicate user ID is added after first being deactivated then, then
+        //deactivating again will cause a constraint violation.  Maybe not so clean - but I'd prefer
+        //to revisit the use of is_active to the SELECT approach.  Doesn't appear to be a way to
+        //deactivate yet anyway.
 
 		return true;
 
