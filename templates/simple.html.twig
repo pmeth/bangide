@@ -26,8 +26,9 @@
 				<ul id="filetree" class="filetree treeview-famfamfam">
 					<li class="open">
 						<span class="folder">/</span>
+						<?php if (!empty($openfiles[0])) : ?>
 						<?php echo filetree::render($filetreepath, $filetreepath, $openfiles[0]); ?>
-
+						<?php endif ?>
 					</li>
 				</ul>
 			</div>

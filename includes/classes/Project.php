@@ -3,7 +3,7 @@
 /**
  * Description of Project
  *
- * @author Peter Meth
+ * @author Peter Meth <pmeth@rogers.com>
  */
 class Project {
 
@@ -20,14 +20,14 @@ class Project {
     public function generateNew($user_id, $database_enabled, $db_user = null, $db_pass = null) {
         $project = $this->getRandomDirectoryName();
 
-        $this->_generateFiles($project);
-	if ($database_enabled) {
-		$this->_writeDatabaseConfigFile($project, $project, $db_user, $db_pass);
-        	$this->_generateDatabase($project, $db_user, $db_pass);
+        //$this->_generateFiles($project);
+        if ($database_enabled) {
+            $this->_writeDatabaseConfigFile($project, $project, $db_user, $db_pass);
+            $this->_generateDatabase($project, $db_user, $db_pass);
         }
-	$stmt = $this->_db->prepare('INSERT INTO ' . $this->_projecttable . ' SET user_id = :user_id, db_name = :db_name, db_user = :db_user, db_pass = :db_pass');
-        
-	$stmt->execute(array(
+        $stmt = $this->_db->prepare('INSERT INTO ' . $this->_projecttable . ' SET user_id = :user_id, db_name = :db_name, db_user = :db_user, db_pass = :db_pass');
+
+        $stmt->execute(array(
             ':db_name' => $project,
             ':db_user' => $db_user,
             ':db_pass' => $db_pass,
@@ -37,7 +37,7 @@ class Project {
     }
 
     public function setDatabaseInfo($db_name, $db_user, $db_pass) {
-}
+    }
 
     public function generateRandomAlpha($length) {
         $string = "";
@@ -67,7 +67,7 @@ class Project {
         return $stmt->fetchObject();
     }
 
-    protected function _generateFiles($project)  {
+    public function generateFiles($project)  {
         $this->_recursiveCopy('project_skeleton', $this->_projectdirectory, $project);
     }
 
@@ -78,13 +78,13 @@ class Project {
 \$db_user = '$db_user';
 \$db_pass = '$db_pass';
 ?>";
-        $projectbase = $this->_projectdirectory . DIRECTORY_SEPARATOR . $project . DIRECTORY_SEPARATOR;
-        for ($i = 2; $i <= 15; $i++) {
-            $filetowrite = $projectbase . "exercise$i" . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'db.php';
-            if (file_exists($filetowrite)) {
-                file_put_contents($filetowrite, $contents);
-            }
-        }
+$projectbase = $this->_projectdirectory . DIRECTORY_SEPARATOR . $project . DIRECTORY_SEPARATOR;
+for ($i = 2; $i <= 15; $i++) {
+    $filetowrite = $projectbase . "exercise$i" . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'db.php';
+    if (file_exists($filetowrite)) {
+        file_put_contents($filetowrite, $contents);
+    }
+}
     }
 
     protected function _generateDatabase($project, $username, $password) {

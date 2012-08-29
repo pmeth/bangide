@@ -14,16 +14,17 @@ class filetree {
 	 * @return string
 	 */
 	static function render($path, $basepath, $openfile) {
+
       if($openfile[0] == '/') {
          //initially openfile will come in with a leading /.  Let's get rid of it to improve comparisons
          $openfile = substr($openfile,1);
       }
-      
+
 		// Open the folder
 		if (!( $dir = opendir($path) )) {
 			die("Can't open $path");
       }
-      
+
 		$filenames = array();
 
 		// Read the contents of the folder, ignoring '.' and '..', and

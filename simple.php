@@ -11,6 +11,8 @@ if (empty($_GET['file'])) {
       $openfiles[] = '/exercise1/index.php';
    } elseif (file_exists($projectname . '/exercise1/index.html')) {
       $openfiles[] = '/exercise1/index.html';
+   } else {
+      $openfiles[] = '';
    }
 } else {
    $openfiles[] = $_GET['file'];
@@ -28,7 +30,9 @@ if (strstr($openfiles[0], '..') !== false) {
 $filetreepath = realpath(__DIR__ . '/' . $projectname);
 
 require_once 'templates/partials/filetree.php';
-if (in_array(substr($openfiles[0], -4), array('.gif','.png','jpeg','.jpg','.bmp'))) {
+if (empty($openfiles[0])) {
+   require_once 'templates/partials/empty.php';
+} elseif (in_array(substr($openfiles[0], -4), array('.gif','.png','jpeg','.jpg','.bmp'))) {
    require_once 'templates/partials/image.php';
 } else {
    require_once 'templates/partials/tabs.php';
