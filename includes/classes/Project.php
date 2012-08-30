@@ -20,7 +20,6 @@ class Project {
     public function generateNew($user_id, $database_enabled, $db_user = null, $db_pass = null) {
         $project = $this->getRandomDirectoryName();
 
-        //$this->_generateFiles($project);
         if ($database_enabled) {
             $this->_writeDatabaseConfigFile($project, $project, $db_user, $db_pass);
             $this->_generateDatabase($project, $db_user, $db_pass);
@@ -34,9 +33,6 @@ class Project {
             ':user_id' => $user_id,
         ));
         return $project;
-    }
-
-    public function setDatabaseInfo($db_name, $db_user, $db_pass) {
     }
 
     public function generateRandomAlpha($length) {
@@ -67,31 +63,43 @@ class Project {
         return $stmt->fetchObject();
     }
 
-    public function generateFiles($project)  {
-        $this->_recursiveCopy('project_skeleton', $this->_projectdirectory, $project);
+    public function generateIndexFile($project) {
+        $pathName = $this->_projectdirectory . DIRECTORY_SEPARATOR . $project;
+
+        if (!file_exists($pathName) && !@mkdir($pathName)) {
+            throw new Exception("Unable to create directory $pathName");
+        }
+
+        $filename = $pathName . DIRECTORY_SEPARATOR . 'index.php';
+        if (!fopen($filename, 'w')) {
+            throw new Exception('Could not create file');
+        }
     }
 
-    protected function _writeDatabaseConfigFile($project, $db_name = 'DATABASE', $db_user = 'USERNAME', $db_pass = 'PASSWORD'){
+    public function generateFiles($project, $subfolder) {
+        $this->_recursiveCopy('project_skeleton' . DIRECTORY_SEPARATOR . $subfolder, $this->_projectdirectory, $project . DIRECTORY_SEPARATOR . $subfolder);
+    }
+
+    protected function _writeDatabaseConfigFile($project, $db_name = 'DATABASE', $db_user = 'USERNAME', $db_pass = 'PASSWORD') {
         $contents = "<?php
 \$db_host = 'localhost';
 \$db_name = '$db_name';
 \$db_user = '$db_user';
 \$db_pass = '$db_pass';
 ?>";
-$projectbase = $this->_projectdirectory . DIRECTORY_SEPARATOR . $project . DIRECTORY_SEPARATOR;
-for ($i = 2; $i <= 15; $i++) {
-    $filetowrite = $projectbase . "exercise$i" . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'db.php';
-    if (file_exists($filetowrite)) {
-        file_put_contents($filetowrite, $contents);
-    }
-}
+        $projectbase = $this->_projectdirectory . DIRECTORY_SEPARATOR . $project . DIRECTORY_SEPARATOR;
+        for ($i = 2; $i <= 15; $i++) {
+            $filetowrite = $projectbase . "exercise$i" . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'db.php';
+            if (file_exists($filetowrite)) {
+                file_put_contents($filetowrite, $contents);
+            }
+        }
     }
 
     protected function _generateDatabase($project, $username, $password) {
         try {
             $this->_db->exec("CREATE DATABASE `$project`");
-        }
-        catch (PDOException $e) {
+        } catch (PDOException $e) {
             return false;
         }
         $this->_db->exec("CREATE USER '$username'@'localhost' IDENTIFIED BY '$password'");
@@ -105,8 +113,7 @@ for ($i = 2; $i <= 15; $i++) {
             $diffDir = $source;
 
         $pathName = $dest . '/' . $diffDir;
-        if (!@mkdir($pathName))
-        {
+        if (!file_exists($pathName) && !@mkdir($pathName)) {
             throw new Exception("Unable to create directory $pathName");
         }
 
@@ -123,4 +130,3 @@ for ($i = 2; $i <= 15; $i++) {
     }
 
 }
-
