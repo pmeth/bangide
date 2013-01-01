@@ -13,11 +13,13 @@ MySQL - 5.5.16-log : Database - learninglamp
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE IF NOT EXISTS learninglamp;
+
 USE `learninglamp`;
 
 /*Table structure for table `project` */
 
-CREATE TABLE `project` (
+CREATE TABLE IF NOT EXISTS `project` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) NOT NULL,
   `db_name` varchar(100) NOT NULL,
@@ -28,7 +30,7 @@ CREATE TABLE `project` (
 
 /*Table structure for table `user` */
 
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `is_active` enum('false','true') NOT NULL DEFAULT 'true',
   `username` varchar(100) DEFAULT NULL,
