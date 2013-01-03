@@ -29,7 +29,7 @@ if ($request->getPostVar('username') !== null && $request->getPostVar('password'
                  'id' => $id,
                  'username' => $username,
                  'passwordhash' => $passwordhash,
-                 'projectfolder' => $project->generateNew($id, $session['db_user'], $session['db_pass']),
+                 'projectfolder' => $project->generateNew($id, $database_enabled, $session['db_user'], $session['db_pass']),
             );
 
 
