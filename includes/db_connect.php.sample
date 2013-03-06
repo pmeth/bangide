@@ -8,3 +8,9 @@ $pdo_user = 'root';
 $pdo_password = '';
 
 $security_salt = 'SetThisToSomethingMoreSecure';
+$session_variable = 'learninglamp';
+
+$appname = "Bang IDE";
+// set this to false to disable new users from registering
+$registration_enabled = true;
+$database_enabled = true;

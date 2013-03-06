@@ -4,7 +4,6 @@ require_once 'classes/Request.php';
 require_once 'classes/Security.php';
 require_once 'classes/Project.php';
 
-$session_variable = 'learninglamp';
 $db = new PDO("$pdo_driver:dbname=$pdo_dbname;host=$pdo_host;port=$pdo_port", $pdo_user, $pdo_password);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -16,10 +15,6 @@ $project = new Project($db);
 
 $session = $request->getSessionVar($session_variable);
 
-// set this to false to disable new users from registering
-$appname = "Bang IDE";
-$registration_enabled = true;
-$database_enabled = true;
 
 // START - FIGURE OUT THE FILENAME AND WHETHER IT REQUIRES LOGIN
 $configfile = '/includes/config.php';
