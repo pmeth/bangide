@@ -64,13 +64,17 @@ class Project {
     }
 
     public function generateIndexFile($project) {
+			$this->generateFile($project, 'index.php');
+		}
+
+    public function generateFile($project, $filename) {
         $pathName = $this->_projectdirectory . DIRECTORY_SEPARATOR . $project;
 
         if (!file_exists($pathName) && !@mkdir($pathName)) {
             throw new Exception("Unable to create directory $pathName");
         }
 
-        $filename = $pathName . DIRECTORY_SEPARATOR . 'index.php';
+        $filename = $pathName . DIRECTORY_SEPARATOR . $filename;
         if (!fopen($filename, 'w')) {
             throw new Exception('Could not create file');
         }
