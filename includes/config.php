@@ -1,4 +1,7 @@
 <?php
+if (!file_exists('db_connect.php')) {
+   die('Please copy includes/db_connect.php.sample to includes/db_connect.php and update the settings to suit your needs');
+}
 require_once 'db_connect.php';
 require_once 'classes/Request.php';
 require_once 'classes/Security.php';
