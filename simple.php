@@ -20,10 +20,7 @@ if (empty($_GET['file'])) {
 	$openfiles[] = $_GET['file'];
 }
 
-if (!empty($_GET['add_dialog'])) {
-	$openfiles = array('');
-}
-/* too add some more files, just add to the array like this
+/* to add some more files, just add to the array like this
   $openfiles[] = '/css/common.css';
 
  */
@@ -35,8 +32,8 @@ if (strstr($openfiles[0], '..') !== false) {
 $filetreepath = realpath(__DIR__ . '/' . $projectname);
 
 require_once 'templates/partials/filetree.php';
-if (empty($openfiles[0])) {
-	require_once 'templates/partials/empty.php';
+if (empty($openfiles[0]) || !empty($_GET['add_dialog'])) {
+	require_once 'templates/partials/add_files.php';
 } elseif (in_array(substr($openfiles[0], -4), array('.gif', '.png', 'jpeg', '.jpg', '.bmp'))) {
 	require_once 'templates/partials/image.php';
 } else {

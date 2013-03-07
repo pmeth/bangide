@@ -15,7 +15,7 @@ class tabs {
 			$divs .= "
 				<div id='tabs-$counter'>
 				<p>
-				You have no files.  Would you like to add some?
+				Add some files
 				<form action='add_files.php' method='post'>
 					<select name='fileset'>
 						<option value='index'>Just an index file</option>
