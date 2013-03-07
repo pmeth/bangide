@@ -17,12 +17,13 @@ class tabs {
 				<p>
 				Add some files
 				<form action='add_files.php' method='post'>
-					<select name='fileset'>
+					Select a file set: <select name='fileset'>
 						<option value='index'>Just an index file</option>
 						<option value='exercise1'>Exercise 1</option>
 						<option value='exercise2'>Exercise 2</option>
 						<option value='exercise3'>Exercise 3</option>
-					</select>
+					</select><br>
+					Or just add a file: <input type='text' name='filename' /><br>
 					<input type='submit' value='Add Files' />
 				</form>
 				</p>
