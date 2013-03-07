@@ -46,7 +46,6 @@ class filetree {
         // display the filenames, and process any subfolders
 
         $rendered = "<ul>";
-        $rendered .= "<li><a href='simple.php?add_dialog=1'>Add Files</a></li>";
 
         foreach ($filenames as $filename) {
             if (substr($filename, -1) == '/') {

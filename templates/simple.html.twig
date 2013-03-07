@@ -27,6 +27,7 @@
 					<li class="open">
 						<span class="folder">/</span>
 						<?php if (!empty($openfiles[0])) : ?>
+						<?php echo "<a href='simple.php?add_dialog=1'>Add Files</a><br>"; ?>
 						<?php echo filetree::render($filetreepath, $filetreepath, $openfiles[0]); ?>
 						<?php endif ?>
 					</li>
