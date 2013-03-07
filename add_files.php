@@ -19,4 +19,13 @@ if (!empty($_POST['fileset']) && $_POST['fileset'] != 'index') {
 		die('Unable to create files.  Perhaps you did not create the project directory with write permission');
 	}
 }
+
+if (!empty($_POST['filename'])) {
+	try {
+		$project->generateFile($session['user']['projectfolder'], $_POST['filename']);
+	} catch (Exception $e) {
+		die('Unable to create files.  Perhaps you did not create the project directory with write permission');
+	}
+}
+
 header('Location: .');
