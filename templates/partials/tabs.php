@@ -17,20 +17,20 @@ class tabs {
             $divs .= "
 				<div id='tabs-$counter'>
 					<form action='render.php' target='rendered' method='post'>
-						<textarea name='code' id='tabs1-code' class='code-editor'>$content</textarea><br />
-                        After Save: 
+                        After Save:
                         <select name='action'>
                             <option>Run Index File</option>
                             <option>Run This File</option>
                             <option>Do Nothing</option>
                         </select>
-                        Window: 
+                        Window:
                         <select name='window' id='windowselect'>
                             <option value='rendered'>Side Window</option>
                             <option value='_blank'>New Window</option>
                         </select>
                         <input type='hidden' name='file' value='$filename' />
-						<input type='submit' name='submit' value='SAVE' />
+						<input type='submit' name='submit' value='SAVE' /><br />
+						<textarea name='code' id='tabs1-code' class='code-editor'>$content</textarea>
 					</form>
 				</div>
 			";
