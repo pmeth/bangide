@@ -19,4 +19,4 @@ if (!empty($_POST['fileset']) && $_POST['fileset'] != 'index') {
 		die('Unable to create files.  Perhaps you did not create the project directory with write permission');
 	}
 }
-require 'simple.php';
+header('Location: .');
