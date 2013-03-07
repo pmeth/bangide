@@ -7,8 +7,12 @@ require_once 'classes/Request.php';
 require_once 'classes/Security.php';
 require_once 'classes/Project.php';
 
-$db = new PDO("$pdo_driver:dbname=$pdo_dbname;host=$pdo_host;port=$pdo_port", $pdo_user, $pdo_password);
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+try {
+	$db = new PDO("$pdo_driver:dbname=$pdo_dbname;host=$pdo_host;port=$pdo_port", $pdo_user, $pdo_password);
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (Exception $e) {
+	die('There was a problem connecting to the database.  Perhaps you did not complete the setup');
+}
 
 $request = new Request();
 if($request->getSessionVar($session_variable) === null) {
