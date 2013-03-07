@@ -11,7 +11,12 @@ if ($request->getPostVar('username') !== null && $request->getPostVar('password'
 	$passwordhash = Security::getHash($request->getPostVar('password'), $security_salt);
 
 	$security = new Security($db);
-	if ($security->checkUsernameAndPasswordHash($username, $passwordhash)) {
+	try {
+		$check = $security->checkUsernameAndPasswordHash($username, $passwordhash);
+	} catch (PDOException $e) {
+		die('There was a problem with retrieving the user. Perhaps you did not setup the user table');
+	}
+	if ($check) {
 		$id = $security->getUserIdFromUsername($username);
 		$dbinfo = $project->getProjectFromUserId($id);
 		$session['db_user'] = $dbinfo->db_user;
